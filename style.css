@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background: #fff;
+  margin: 0.5em 0;
+  padding: 1em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+footer {
+  text-align: center;
+  padding: 1em 0;
+  background: #eee;
+  border-top: 1px solid #ddd;
+}
