@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokedex</title>
-  </head>
-  <body>
-    <h1>Welcome to the Pokedex</h1>
-    <p>Explore the world of Pokemon!</p>
-    <ul>
-      <li>Pikachu</li>
-      <li>Charmander</li>
-      <li>Bulbasaur</li>
-    </ul>
-    <footer>
-      <p>&copy; 2023 Pokedex</p>
-    </footer>
-    <script src="./script.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokedex</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./card.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Pokédex</h1>
+    <p>Explore the world of Pokémon!</p>
+    <div class="pokedex-buttons">
+      <span class="btn-blue"></span>
+      <span class="btn-green"></span>
+      <span class="btn-yellow"></span>
+    </div>
+    <h1>Pokédex</h1>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="ID / Name" />
+    </div>
+  </header>
+
+  <main>
+    <section class="pokedex"></section>
+    <div id="overlay" class="overlay">
+      <div class="pokemonCard"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      <a href="https://pokeapi.co/" target="_blank">API Pokémon</a> |
+      <a href="https://www.pokemon.com/" target="_blank">Site Oficial Pokémon</a>
+    </p>
+    <p>&copy; 2025 Pokedex. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+
 </html>
