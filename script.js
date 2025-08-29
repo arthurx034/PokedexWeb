@@ -169,6 +169,7 @@ function levenshteinDistance(s1, s2) {
       dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
     }
   }
+  pokedex.style.display = dp[m][n] <= 3 ? 'block' : 'none';
   return dp[m][n];
 }
 
