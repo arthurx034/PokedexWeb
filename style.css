@@ -63,8 +63,15 @@ header h1 {
   gap: 20px;
   position: relative;
   top: 0;
-  max-height: 70vh;
+  max-height: 62.5vh;
   overflow-y: auto;
+  width: 90%;
+}
+
+@media screen and (min-width: 1000px) {
+  .pokedex {
+    min-height: 50vh;
+  }
 }
 
 #loadingMessage {
@@ -168,7 +175,7 @@ footer a {
   font-size: 1.2rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1300px) {
   header {
     margin-top: 70px;
     background: #7a000f;
@@ -184,7 +191,9 @@ footer a {
   }
 
   .pokedex {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    width: 80%;
+    max-height: 50vh;
   }
 
   .pokemon-card img {
