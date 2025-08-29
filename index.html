@@ -18,14 +18,19 @@
       <span class="btn-green"></span>
       <span class="btn-yellow"></span>
     </div>
-    <h1>Pokédex</h1>
     <div class="search-container">
       <input type="text" id="searchInput" placeholder="ID / Name" />
     </div>
   </header>
 
   <main>
-    <section class="pokedex"></section>
+    <section class="pokedex">
+      <p id="loadingMessage">Carregando Pokémons...</p>
+    </section>
+    <div class="message-container">
+      <p id="noResultsMessage" style="display: none;">Nenhum pokemon encontrado</p>
+      <div id="suggestionsList"></div>
+    </div>
     <div id="overlay" class="overlay">
       <div class="pokemonCard"></div>
     </div>

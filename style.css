@@ -55,12 +55,49 @@ header h1 {
   background: #1c1c1c;
   border: 8px solid #222;
   border-radius: 20px;
-  margin: 20px;
+  margin: 20px auto;
   padding: 20px;
   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
+  position: relative;
+  top: 0;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+#loadingMessage {
+  text-align: center;
+  color: #ffcc00;
+  font-size: 1.5rem;
+  margin-top: 50px;
+}
+
+.message-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#noResultsMessage {
+  display: none;
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+  margin-top: 50px;
+}
+
+#suggestionsList {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.suggestion-item {
+  color: #ffcc00;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .pokemon-card {
@@ -90,11 +127,14 @@ footer {
   background: #7a000f;
   padding: 10px;
   border-top: 5px solid #440009;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
 
-  a {
-    color: #ffcc00;
-    text-decoration: none;
-  }
+footer a {
+  color: #ffcc00;
+  text-decoration: none;
 }
 
 .search-container {
@@ -127,3 +167,39 @@ footer {
   transform: translateY(-50%);
   font-size: 1.2rem;
 }
+
+@media screen and (max-width: 768px) {
+  header {
+    margin-top: 70px;
+    background: #7a000f;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .pokedex-buttons {
+    left: 10px;
+    top: 10px;
+  }
+
+  .pokedex {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .pokemon-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .search-container {
+    right: 10px;
+  }
+
+  #searchInput {
+    padding: 10px 30px 10px 10px;
+    font-size: 0.9rem;
+  }
+}
+
+;

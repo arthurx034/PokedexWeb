@@ -72,3 +72,24 @@
     font-weight: bold;
     color: #555;
 }
+
+@media screen and (max-width: 500px) {
+    .pokemonCard {
+        width: 90%;
+        height: auto;
+        padding: 15px;
+    }
+
+    .pokemonCard img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .pokemonCard h2 {
+        font-size: 1.5rem;
+    }
+
+    .pokemonCard p {
+        font-size: 0.9rem;
+    }
+}
