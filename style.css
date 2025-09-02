@@ -167,6 +167,8 @@ footer {
   padding: 10px;
   border-top: 5px solid #440009;
   margin-top: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 footer a {
