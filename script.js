@@ -1,6 +1,8 @@
 // ==============================
 // Seletores de elementos do DOM
 // ==============================
+
+
 const overlay = document.querySelector(".overlay");
 const pokemonCard = document.querySelector(".pokemonCard");
 const pokedex = document.querySelector(".pokedex");
@@ -12,12 +14,16 @@ const loadingMessage = document.getElementById("loadingMessage");
 // ==============================
 // Estado Global
 // ==============================
+
+
 let allPokemon = [];
 let currentDisplayedPokemon = [];
 
 // ==============================
 // Funções Auxiliares
 // ==============================
+
+
 function formatarNome(nome) {
   return nome.charAt(0).toUpperCase() + nome.slice(1);
 }
@@ -32,6 +38,8 @@ function criarElemento(tag, classe, texto) {
 // ==============================
 // Funções de Renderização
 // ==============================
+
+
 function criarCardPokemon(pokemon) {
   const card = document.createElement("div");
   card.classList.add("pokemon-card");
@@ -56,6 +64,8 @@ function renderizarPokemons(lista) {
 // ==============================
 // Funções de Busca e Sugestões
 // ==============================
+
+
 function mostrarSugestoes(termoBusca) {
   // Esconder os cards de Pokémon
   pokedex.style.display = "none";
@@ -149,6 +159,8 @@ function configurarBusca() {
 // ==============================
 // Funções de Evolução
 // ==============================
+
+
 function pegarEvolucoes(chain, nomePokemon) {
   function buscarPokemon(node) {
     if (node.species.name === nomePokemon) return node;
@@ -172,6 +184,10 @@ function pegarEvolucoes(chain, nomePokemon) {
   return pokemonNode ? coletarEvolucoes(pokemonNode) : [];
 }
 
+// ==============================
+// Funções de Card Detalhado
+// ==============================
+
 // Função para formatar a altura (converter de decímetros para metros)
 function formatarAltura(altura) {
   return (altura / 10).toFixed(1) + "m";
@@ -182,9 +198,6 @@ function formatarPeso(peso) {
   return (peso / 10).toFixed(1) + "kg";
 }
 
-// ==============================
-// Funções de Card Detalhado
-// ==============================
 async function abrirCardDetalhado(pokemon) {
   try {
     const especieRes = await fetch(pokemon.species.url);
@@ -241,32 +254,36 @@ function abrirCard() {
 // ==============================
 // Função de Carregamento Inicial
 // ==============================
-async function carregarPokemons() {
-  pokedex.innerHTML = "";
-  pokedex.appendChild(loadingMessage);
-  loadingMessage.style.display = "block";
 
+
+async function carregarTodosPokemons() {
   try {
-    const promises = Array.from({ length: 151 }, (_, i) =>
-      fetch(`https://pokeapi.co/api/v2/pokemon/${i + 1}`)
-        .then((res) => res.json())
-        .then((pokemon) => allPokemon.push(pokemon))
-        .catch((error) => console.error(`Falha ao carregar Pokémon ${i + 1}:`, error))
-    );
+    // Busca a lista completa de URLs dos Pokémons
+    const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1300');
+    const data = await response.json();
 
-    await Promise.all(promises);
-    allPokemon.sort((a, b) => a.id - b.id);
+    // Array de URLs individuais de cada Pokémon
+    const urls = data.results.map(p => p.url);
 
-    loadingMessage.style.display = "none";
-    renderizarPokemons(allPokemon);
+    // Busca detalhada de cada Pokémon
+    const promises = urls.map(url => fetch(url).then(res => res.json()).catch(err => null));
+    const resultados = await Promise.all(promises);
+
+    // Filtra resultados válidos, ordena por ID e atualiza o estado global
+    allPokemon = resultados.filter(p => p !== null).sort((a, b) => a.id - b.id);
+
+    return allPokemon;
   } catch (error) {
-    console.error("Erro ao carregar Pokémon:", error);
+    console.error('Erro ao carregar todos os Pokémons:', error);
+    return [];
   }
 }
 
 // ==============================
 // Função de Distância de Levenshtein
 // ==============================
+
+
 function levenshteinDistance(s1, s2) {
   const m = s1.length;
   const n = s2.length;
@@ -292,6 +309,11 @@ function levenshteinDistance(s1, s2) {
 // ==============================
 // Inicialização
 // ==============================
-carregarPokemons();
+
+
+carregarTodosPokemons().then((pokemons) => {
+  renderizarPokemons(pokemons);
+  loadingMessage.style.display = "none";
+});
 abrirCard();
 configurarBusca();
