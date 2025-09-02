@@ -297,12 +297,6 @@ main {
   flex-direction: column;
 }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 /* Melhorias de acessibilidade para modo escuro/claro do sistema */
 @media (prefers-color-scheme: light) {
   .pokemon-card {
