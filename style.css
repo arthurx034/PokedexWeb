@@ -302,3 +302,32 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* Melhorias de acessibilidade para modo escuro/claro do sistema */
+@media (prefers-color-scheme: light) {
+  .pokemon-card {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Melhorias para toques em dispositivos móveis */
+@media (hover: none) {
+  .pokemon-card:hover {
+    transform: none;
+  }
+
+  .pokemon-card:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Ajuste para evitar zoom em inputs em iOS */
+@supports (-webkit-touch-callout: none) {
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
