@@ -35,16 +35,12 @@ O projeto é voltado para **aprendizado** de:
 
 ## 📂 Estrutura do Projeto
 
-PokedexWeb/
-
-├── index.html # Estrutura principal da aplicação
-
-├── style.css # Estilos gerais (layout, responsividade)
-
-├── card.css # Estilos dos cards individuais
-
-└── script.js # Lógica em JavaScript (renderização, interações)
-
+| Arquivo/Pasta     | Descrição                                         |
+|-------------------|---------------------------------------------------|
+| `index.html`      | Estrutura principal da aplicação                  |
+| `style.css`       | Estilos gerais (layout, responsividade)          |
+| `card.css`        | Estilos específicos para os cards individuais     |
+| `script.js`       | Lógica em JavaScript (renderização, interações)  |
 
 ---
 
